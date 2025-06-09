@@ -1,14 +1,7 @@
 import UIKit
-import Foundation
 
-final class AlertPresenter {
-    private weak var viewController: UIViewController?
-    
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-
-    func show(alertModel: AlertModel) {
+enum AlertPresenter {
+    static func show(alertModel: AlertModel, on viewController: UIViewController) {
         let alert = UIAlertController(
             title: alertModel.title,
             message: alertModel.message,
@@ -23,9 +16,8 @@ final class AlertPresenter {
         }
 
         alert.addAction(action)
-
         alert.view.accessibilityIdentifier = "GameResultsAlert"
-        viewController?.present(alert, animated: true, completion: nil)
+        viewController.present(alert, animated: true, completion: nil)
     }
 }
 

@@ -17,8 +17,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     private var currentQuestionIndex: Int = 0
     private var correctAnswers: Int = 0
     
-    
-
     init(viewController: MovieQuizViewControllerProtocol) {
         self.viewController = viewController
 
@@ -53,11 +51,11 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
     }
 
-    func isLastQuestion() -> Bool {
+    private func isLastQuestion() -> Bool {
         currentQuestionIndex == questionsAmount - 1
     }
 
-    func didAnswer(isCorrectAnswer: Bool) {
+    private func didAnswer(isCorrectAnswer: Bool) {
         if isCorrectAnswer {
             correctAnswers += 1
         }

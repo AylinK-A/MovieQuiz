@@ -59,12 +59,14 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
             title: result.title,
             message: message,
             preferredStyle: .alert)
+        alert.view.accessibilityIdentifier = "GameResultsAlert"
 
             let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
                 guard let self = self else { return }
 
                 self.presenter.restartGame()
             }
+        action.setValue("PlayAgainButton", forKey: "accessibilityIdentifier")
 
         alert.addAction(action)
 
@@ -78,8 +80,8 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     }
 
     func showLoadingIndicator() {
-        activityIndicator.isHidden = false // говорим, что индикатор загрузки не скрыт
-        activityIndicator.startAnimating() // включаем анимацию
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
 
     func hideLoadingIndicator() {
